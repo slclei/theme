@@ -1,0 +1,30 @@
+https://update.angular.io/?v=15.0-16.0
+
+Check before update:
+
+Depended library version:
+1 Check node.js version to be v16 or v18.
+2 Check Typescript version to be 4.9.3 or later.
+3 Check Zone.js version to be 0.13.x or later.
+
+Update in project:
+1 Update tests that use BrowserPlatformLocation because MockPlatformLocation is now provided by default in tests.
+2 Projects no longer support View Engine libraries.
+3 Tests have to be readjusted related to ActiveRoute.
+
+Changes in import part in projects:
+1 @angular/common/http/XhrFacory to @angular/common/XhrFacory.
+2 withServerTransition is now deprecated. APP_ID can be set.
+3 Remove any reference to @Directive/@Component moduleId property.
+4 Update imports from import {makeStateKey, StateKey, TransferState} from '@angular/platform-browser' to import {makeStateKey, StateKey, TransferState} from '@angular/core'.
+5 entryComponents is no longer available and any reference to it can be removed from the @NgModule and @Component public APIs.
+6 ngTemplateOutletContext has stricter type checking which requires you to declare all the properties in the corresponding object.
+7 Angular packages no longer include FESM2015 and the distributed ECMScript has been updated from 2020 to 2022.
+8 BrowserTransferStateModule is no longer available and any reference to it can be removed from your applications.
+9 Update your code to use Injector.create rather than ReflectiveInjector since ReflectiveInjector is removed.
+10 QueryList.filter now supports type guard functions. Since the type will be narrowed, you may have to update your application code that relies on the old behavior.
+
+Update steps:
+1 ng update;
+2 ng update @angular/cli;
+3 ng update @angular/core;
